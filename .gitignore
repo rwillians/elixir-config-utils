@@ -1,0 +1,13 @@
+/.claude/settings.local.json
+/.elixir_ls/
+/_build/
+/cover/
+/deps/
+/tmp/
+/doc/
+*.ez
+.fetch
+play.ex
+.DS_Store
+erl_crash.dump
+config_utils-*.tar
