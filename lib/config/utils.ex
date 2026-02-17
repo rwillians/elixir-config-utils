@@ -24,6 +24,23 @@ defmodule Config.Utils do
   def runtime_env, do: config_env()
 
   @doc ~S"""
+  Resolves the log level from the `LOG_LEVEL` environment variable.
+  """
+  @spec log_level() :: level | nil
+        when level: :debug | :info | :warning | :error
+
+  def log_level do
+    case string("LOG_LEVEL") do
+      nil -> nil
+      "debug" -> :debug
+      "info" -> :info
+      "warning" -> :warning
+      "error" -> :error
+      other -> raise(ArgumentError, "expected LOG_LEVEL to be one of nil, 'debug', 'info', 'warning' or 'error', got #{inspect(other)}")
+    end
+  end
+
+  @doc ~S"""
   Returns the version defined in the Mix project.
   """
   @spec version() :: semver
